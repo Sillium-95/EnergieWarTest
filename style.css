@@ -1,0 +1,405 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: black;
+  }
+  
+  .menu {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  
+  .menu-item {
+    padding: 8rem 0;
+    flex: 1 1 auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.4;
+    overflow: hidden;
+    transition: flex-grow .3s ease;
+    
+    
+    .logo-image {
+      width: 250px;
+      transition: width .3s ease;
+    }
+   
+    .line {
+      height: 3px;
+      width: 20px;
+      background-color: white;
+      margin: 1rem auto;
+      transition: width .4s ease;
+    }
+    
+    .smoke {
+      display: none;
+    }
+  
+    
+    &.active {
+       flex: 2 1 auto;
+      opacity: 1;
+      padding: 6rem 0;
+      
+      .logo-image {
+        width: 300px;
+      }
+      
+      .smoke {
+        display: block;
+      }
+      
+      .line {
+        width: 250px
+      }
+      
+      .button {
+        display: block;
+      }
+      
+      .image {
+        display: block;
+        animation: zoomInBlur 16s infinite;
+      }
+    }
+  }
+  
+  .image {
+       background-size: cover;
+    background-position: center center;
+    height: 100%;
+    position: relative;
+    z-index: -1;
+    display: none;
+    }
+  
+  .button {
+    position: absolute;
+    padding: 4px 84px;
+    bottom: 40%;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    display: none;
+    cursor: pointer;
+    font-size: 22px;
+  }
+  
+  .warzone {
+    .image {
+         background-image: url('https://store-images.s-microsoft.com/image/apps.5292.13835473807186336.9510cd97-f71a-49b0-9e5c-0877f4bc9de3.b5893ca4-bb2d-4329-9be4-41bb1829ee84?mode=scale&q=90&h=1080&w=1920&background=%23FFFFFF');
+      }
+    
+    .logo-image {
+      filter: invert(1);
+    }
+  }
+  
+  .modern-warfare {
+     .image {
+         background-image: url('https://bnetcmsus-a.akamaihd.net/cms/blog_header/ls/LSDF4YWJXM5I1575407576482.jpg');
+      }
+  }
+  
+  .cold-war {
+      .image {
+        background-image: url(./img/a0a38d58-973d-4180-9f94-bb86b7073c6d.jpg);
+      }
+  }
+  
+  .button--purchase {
+    background-color: yellow;
+  }
+  
+  .active-background {
+    .background-image {
+      background-position: center center;
+      background-repeat: no-repeat;
+      z-index: -2;
+      opacity: .4;
+      filter: blur(3px);
+    }
+    
+    .background-overlay {
+      background-image: url('https://s3.medialoot.com/images/quick-tip-illustrator-grunge/free_texture_download.jpg');
+      z-index: -1;
+      filter: invert(1);
+      mix-blend-mode: screen;
+      opacity: 0.2;
+    }
+  }
+  
+  .background {
+     position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+  }
+  
+  .smoke {
+    content: "";
+    width: 300px;
+    height: 200px;
+    background-image: url("https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/kronos/home/common/smoke.png");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    position: absolute;
+    -webkit-animation: 10s ease-out smoke infinite;
+    animation: 10s ease-out smoke infinite;
+    left: 40%;
+    top: 65%;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+  }
+  .smoke.two {
+    -webkit-animation: 10s ease-out smoke infinite 5s;
+    animation: 10s ease-out smoke infinite 5s;
+  }
+  .smoke.three {
+    -webkit-animation: 10s ease-out smoke-two infinite 2s;
+    animation: 10s ease-out smoke-two infinite 2s;
+    left: 20%;
+    top: 65%;
+  }
+  .smoke.four {
+    -webkit-animation: 10s ease-out smoke-two infinite 7s;
+    animation: 10s ease-out smoke-two infinite 7s;
+    left: 15%;
+    top: 65%;
+  }
+  .animate .smoke {
+    opacity: 0;
+    -webkit-animation: none;
+    animation: none;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+  }
+  
+  
+  @keyframes zoomInBlur {
+    0% {
+      transform: scale(1);
+      filter: blur(10px);
+    }
+    
+    5% {
+      filter: blur(0px);
+    }
+    
+    95%,98% {
+      transform: scale(1.2);
+      filter: blur(0px);
+    }
+    
+    100% {
+      filter: blur(20px);
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes smoke {
+    0% {
+      -webkit-transform: rotate(0deg) scale(5) translateY(0px) translateX(80px);
+      transform: rotate(0deg) scale(5) translateY(0px) translateX(80px);
+      opacity: 0;
+    }
+    20%,
+    80% {
+      opacity: .8;
+    }
+    100% {
+      -webkit-transform: rotate(0deg) scale(5) translateY(-100px) translateX(120px);
+      transform: rotate(0deg) scale(5) translateY(-100px) translateX(120px);
+      opacity: 0;
+    }
+  }
+   
+  @keyframes smoke-two {
+    0% {
+      -webkit-transform: rotate(180deg) scale(5) translateY(0) translateX(0px);
+      transform: rotate(180deg) scale(5) translateY(0) translateX(0px);
+      opacity: 0;
+    }
+    20%,
+    80% {
+      opacity: .8;
+    }
+    100% {
+      -webkit-transform: rotate(180deg) scale(5) translateY(80px) translateX(50px);
+      transform: rotate(180deg) scale(5) translateY(80px) translateX(50px);
+      opacity: 0;
+    }
+  }
+
+  @import "compass/css3";
+
+.trapdoor {
+  -webkit-transform: translateZ(0px);
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -25px;
+  width: 200px;
+  height: 50px;
+  box-shadow: inset -7px 0px 12px -8px rgba(0,0,0,0.3), inset 7px 0px 12px -8px rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.3);
+  -webkit-transition: background 400ms ease-in-out;
+  -moz-transition: background 400ms ease-in-out;
+  -ms-transition: background 400ms ease-in-out;
+  -o-transition: background 400ms ease-in-out;
+  transition: background 400ms ease-in-out;
+  
+  &:hover {
+    background: #fff;
+  
+    .door {
+       box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.4);
+       -webkit-transform: scale(1.08);
+       -moz-transform: scale(1.08);
+       -ms-transform: scale(1.08);
+       -o-transform: scale(1.08);
+       transform: scale(1.08);
+    }
+   
+    .top {
+    top: -50%; 
+    }
+    
+    .bottom {
+    top: 100%; 
+    }
+  }
+  
+ .twitter-follow-button {
+   margin-left: -77px;
+   position: absolute !important;
+   margin-top: -14px;
+   left: 50%;
+   top: 50%;
+  }
+}
+
+.top {
+  top: 0%;
+  left: 0px;
+  
+  &:before {
+    top: 5px;
+  }
+}
+
+.bottom {
+  top: 50%;
+  left: 0px;
+  
+  &:before {
+    top: -20px;
+  }
+}
+
+.door {
+  -webkit-transition: top 400ms, box-shadow 200ms, -webkit-transform 300ms;
+  -moz-transition: top 400ms, box-shadow 200ms, -moz-transform 300ms;
+  -ms-transition: top 400ms, box-shadow 200ms, -ms-transform 300ms;
+  -o-transition: top 400ms, box-shadow 200ms, -o-transform 300ms;
+  transition: top 400ms, box-shadow 200ms, transform 300ms;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  background-color: #fff;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  z-index: 2;
+  height: 50%;
+  
+  &:before {
+    font-family: 'tweet', sans-serif;
+    position: absolute;
+    margin-left: -20px;
+    font-size: 35px;
+    display: block;
+    color: #4099FF;
+    content: "\e000";
+    width: 0px;
+    height: 20px;
+    left: 52%;
+  }
+}
+/* CSS */
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #002bff,
+    #ffffff,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
